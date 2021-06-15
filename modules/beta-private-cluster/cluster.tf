@@ -54,7 +54,8 @@ resource "google_container_cluster" "primary" {
   default_snat_status {
     disabled = var.disable_default_snat
   }
-  min_master_version = var.release_channel != null ? null : local.master_version
+  #min_master_version = var.release_channel != null ? null : local.master_version
+  min_master_version = local.master_version
 
   dynamic "cluster_telemetry" {
     for_each = local.cluster_telemetry_type_is_set ? [1] : []
